@@ -6,11 +6,13 @@ const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
 const mongoose = require("mongoose");
 const app = express();
 const Cryptocurrency = require("./models/Cryptocurrency");
+require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
-mongoose.connect("mongodb+srv://admin:oxlwJ7QPZwlCF3vO@cluster0.sc1aozc.mongodb.net/portfolio");
+
+mongoose.connect("mongodb+srv://admin:" + process.env.DATABASE_PASSWORD + "@cluster0.sc1aozc.mongodb.net/portfolio");
 
 app.post("/cryptocurrency-price", async(req, res) =>{
     const priceResult = await getCryptoPriceFlare(req.body.cryptocurrency);
@@ -25,7 +27,8 @@ app.post("/add-cryptocurrency", async(req, res) => {
         amount: req.body.amount
     });
     newAsset.save().then(() => {
-        console.log("Record added to database")
+        console.log("Record added to database");
+        res.send("Record added to database");
     }).catch((err) => {
         // throw an error
         console.log(err);
