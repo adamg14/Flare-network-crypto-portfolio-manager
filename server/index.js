@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const PORT = 4000;
 const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
+const getCryptocurrencies = require("./middleware/getCryptocurrencies");
 const mongoose = require("mongoose");
 const app = express();
 const Cryptocurrency = require("./models/Cryptocurrency");
@@ -35,6 +36,26 @@ app.post("/add-cryptocurrency", async(req, res) => {
     });
 });
 
+app.get("/get-cryptocurrencies", async(req, res) => {
+    res.send(await getCryptocurrencies());
+});
+
+app.get("/pie-chart-data", async(req, res) => {
+    const priceData = [];
+    const labelData = [];
+    const assets = await getCryptocurrencies();
+    for (let i = 0; i < assets.length; i++){
+        const currentPrice = await getCryptoPriceFlare(assets[i]["cryptocurrency"]);
+        const assetValue = parseFloat(currentPrice) * assets[i]["amount"];
+        priceData.push(assetValue);
+        labelData.push(assets[i]["cryptocurrency"])
+    }
+    res.send({
+        "Price Data": priceData,
+        "Label Data": labelData
+    });
+});
+ 
 app.listen(PORT, () => {
     console.log("Server listening on PORT " + PORT + "...");
 });
