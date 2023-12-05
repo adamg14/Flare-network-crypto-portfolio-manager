@@ -33,5 +33,4 @@ async function getCryptoPriceFlare(cryptocurrency){
     return _price;
 }
 
-
 module.exports = getCryptoPriceFlare;

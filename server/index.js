@@ -46,6 +46,7 @@ app.get("/pie-chart-data", async(req, res) => {
     const assets = await getCryptocurrencies();
     for (let i = 0; i < assets.length; i++){
         const currentPrice = await getCryptoPriceFlare(assets[i]["cryptocurrency"]);
+        console.log("THIS SHOULD BE THE CURRENT PRICE " + currentPrice);
         const assetValue = parseFloat(currentPrice) * assets[i]["amount"];
         priceData.push(assetValue);
         labelData.push(assets[i]["cryptocurrency"])

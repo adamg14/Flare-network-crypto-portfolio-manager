@@ -18,19 +18,20 @@ function AssetAllocation(){
       }
     }
     fetchData();
-    });
-
-    const data = {
-        options: {
-          series: priceData,
-          labels: labelData
-        }
-      };
-    return (
-        <div>
-            <Chart options={ data.options } series={data.options.series } type="pie" width="30%"></Chart>
-        </div>
-    )
+  });
+  
+  const data = {
+    options: {
+      series: priceData,
+      labels: labelData
+    }
+  };
+  
+  return (
+    <div>
+        <Chart options={ data.options } series={data.options.series } type="pie" width="30%"></Chart>
+    </div>
+  ) 
 }
 
 export default AssetAllocation;
