@@ -5,12 +5,21 @@ import Heading from './components/Heading';
 import AssetAllocation from './components/AssetAllocation';
 import NavigationBar from './components/NavigationBar';
 import RegisterForm from './components/RegisterForm';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
-      <Heading></Heading>
-      <NavigationBar></NavigationBar>
-      {/* <AssetAllocation></AssetAllocation> */}
+      <Router>
+        <div>
+          <NavigationBar />
+          <div className='container mt-4'>
+            <Switch>
+              <Route path="/register" exact component={RegisterForm} />
+            </Switch>
+          </div>
+        </div>
+      </Router>
     </div>
   );
 }

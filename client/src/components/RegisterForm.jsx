@@ -18,6 +18,9 @@ function RegisterForm(){
                 <label htmlFor="password-input" className="form-label">Password</label>
                 <input type="password" className="form-control" id="password-input" placeholder="Enter password here - do not share with anyone"/>
             </div>
+            <div className="mb-3">
+                <button type="submit" className="btn btn-primary mb-3">Register</button>
+            </div>
         </form>
     </div>
     );

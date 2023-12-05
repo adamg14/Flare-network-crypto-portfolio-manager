@@ -13,7 +13,7 @@ function NavigationBar(){
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/register">Register</Link>
+                                <a href="/register" className="nav-link">Register</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link">Login</a>
