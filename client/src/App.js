@@ -5,7 +5,9 @@ import Heading from './components/Heading';
 import AssetAllocation from './components/AssetAllocation';
 import NavigationBar from './components/NavigationBar';
 import RegisterForm from './components/RegisterForm';
+import AddAsset from './components/AddAsset';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginForm from './components/LoginForm';
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
           <div className='container mt-4'>
             <Switch>
               <Route path="/register" exact component={RegisterForm} />
+              <Route path="/login" exact component={LoginForm}></Route>
+              <Route path="/view-portfolio" exact component={AssetAllocation}></Route>
+              <Route path="/add-asset" exact component={AddAsset}></Route>
             </Switch>
           </div>
         </div>

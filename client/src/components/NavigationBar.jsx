@@ -16,7 +16,7 @@ function NavigationBar(){
                                 <a href="/register" className="nav-link">Register</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">Login</a>
+                                <a className="nav-link" href="/login">Login</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link">Add Asset</a>

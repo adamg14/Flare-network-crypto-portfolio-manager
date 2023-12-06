@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const PORT = 4000;
 const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
 const getCryptocurrencies = require("./middleware/getCryptocurrencies");
+const registerUser = require("./middleware/registerUser");e
+
 const mongoose = require("mongoose");
 const app = express();
 const Cryptocurrency = require("./models/Cryptocurrency");
@@ -56,7 +58,11 @@ app.get("/pie-chart-data", async(req, res) => {
         "Label Data": labelData
     });
 });
- 
+
+app.post("/register", (req, res) => {
+    registerUser(req, res);
+});
+
 app.listen(PORT, () => {
     console.log("Server listening on PORT " + PORT + "...");
 });
