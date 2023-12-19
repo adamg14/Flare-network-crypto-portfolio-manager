@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const PORT = 4000;
 const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
 const getCryptocurrencies = require("./middleware/getCryptocurrencies");
-const registerUser = require("./middleware/registerUser");e
+const registerUser = require("./middleware/registerUser");
+const passwordHashSalt = require("./middleware/passwordHashSalt");
 
 const mongoose = require("mongoose");
 const app = express();

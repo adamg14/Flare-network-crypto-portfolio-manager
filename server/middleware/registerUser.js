@@ -1,5 +1,5 @@
-import passwordHashSalt from "./passwordHashSalt";
-import User from "../models/User";
+const passwordHashSalt = require("./passwordHashSalt");
+const User = require("../models/User");
 
 function registerUser(req, res){
     try {
