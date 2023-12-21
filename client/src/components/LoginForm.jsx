@@ -1,6 +1,24 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function LoginForm(){
+
+    const [emailInput, setEmailInput] = useState();
+    const [password, setPasswordInput] = useState();
+
+    function handleEmailChange(event){
+        setEmailInput(event.target.value);
+    }
+
+    function handlePasswordChange(event){
+        setPasswordInput(event.target.value);
+    }
+
+    function handleLoginSubmition(){
+
+    }
+
     return (
         <div>
             <h1>Log In</h1>
@@ -16,7 +34,8 @@ function LoginForm(){
             <div className="mb-3">
                 <button type="submit" className="btn btn-primary mb-3">Login In</button>
             </div>
-        </form>
+            </form>
+            {/* login form response here */}
         </div>
     )
 }

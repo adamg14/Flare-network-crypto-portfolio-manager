@@ -6,6 +6,7 @@ const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
 const getCryptocurrencies = require("./middleware/getCryptocurrencies");
 const registerUser = require("./middleware/registerUser");
 const passwordHashSalt = require("./middleware/passwordHashSalt");
+const handleLogin = require("./middleware/handleLogin");
 
 const mongoose = require("mongoose");
 const app = express();
@@ -62,6 +63,10 @@ app.get("/pie-chart-data", async(req, res) => {
 
 app.post("/register", (req, res) => {
     registerUser(req, res);
+});
+
+app.post("login", (req, res) => {
+    handleLogin(req, res);
 });
 
 app.listen(PORT, () => {
