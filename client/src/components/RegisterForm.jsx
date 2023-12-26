@@ -31,8 +31,16 @@ function RegisterForm(){
         };
 
         axios.post("http://localhost:4000/register", postRequestData).then((registerResponse) => {
-            console.log("this should be the response" + registerResponse.data);
+            console.log("THIS SHOULD BE THE ANSWER " + registerResponse.data);
+            if (registerResponse.data.status === "success"){
+                setSuccessMessage(registerResponse.data.message);
+                document.getElementById("successAlert").removeAttribute("hidden");
+            }else{
+                setFailureMessage(registerResponse.data.message);
+                document.getElementById("failureAlert").removeAttribute("hidden");
+            }
         });
+
 
     }
 
@@ -55,7 +63,6 @@ function RegisterForm(){
             <div className="mb-3">
                 <button type="submit" className="btn btn-primary mb-3" onClick={ handleClick }>Register</button>
             </div>
-            {/* success and failure  */}
 
             <div id="successAlert" hidden>
                 <div className="alert alert-success" role="alert">

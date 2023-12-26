@@ -8,4 +8,4 @@ async function getUser(email){
     return selectedUser;
 }
 
-export default getUser;
+module.exports = getUser;

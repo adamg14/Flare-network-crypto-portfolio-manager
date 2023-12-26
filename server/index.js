@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const expressSession = require("express-session");
+const cookieParser = require("cookie-parser");
 const PORT = 4000;
 const getCryptoPriceFlare = require("./middleware/getCryptoPriceFlare");
 const getCryptocurrencies = require("./middleware/getCryptocurrencies");
@@ -16,9 +18,24 @@ require("dotenv").config();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(expressSession({
+    secret: 'secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(cookieParser());
 
 mongoose.connect("mongodb+srv://admin:" + process.env.DATABASE_PASSWORD + "@cluster0.sc1aozc.mongodb.net/portfolio");
 
+// middleware function authenticate the user by checking for a valid session to before the user can access the restricted parts of the web application
+const authenticate = (req, res, next) => {
+    if (req.session.user != null && req.cookies.user != null){
+        next();
+    }else{
+        return res.redirect("/login");
+    }
+}
 app.post("/cryptocurrency-price", async(req, res) =>{
     const priceResult = await getCryptoPriceFlare(req.body.cryptocurrency);
     res.send({
@@ -66,7 +83,14 @@ app.post("/register", (req, res) => {
 });
 
 app.post("login", (req, res) => {
-    handleLogin(req, res);
+    const loginSuccess = handleLogin(req, res);
+    if (loginSuccess){
+        // set the session
+        req.session.user = req.body.userEmail;
+        // set the cookie
+        res.cookie("user", req.body.userEmail);
+        console.log("user logged in successfully");
+    }
 });
 
 app.listen(PORT, () => {

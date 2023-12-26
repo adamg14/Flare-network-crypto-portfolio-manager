@@ -22,7 +22,7 @@ function NavigationBar(){
                                 <a className="nav-link">Add Asset</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">View Portfolio</a>
+                                <a className="nav-link" href="/portfolio">View Portfolio</a>
                             </li>
                         </ul>
                     </div>

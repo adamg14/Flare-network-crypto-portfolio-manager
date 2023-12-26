@@ -11,11 +11,17 @@ function registerUser(req, res){
         });
 
         newUser.save().then(() => {
-            res.send("user added to database");
+            res.send({
+                status: "success",
+                message: "User added to the database."
+            });
         });
         
     } catch (error) {
-        res.send(error);
+        res.send({
+            status: "failure",
+            message: "An error has occurred. Please try again later"
+        });
     }
 }
 

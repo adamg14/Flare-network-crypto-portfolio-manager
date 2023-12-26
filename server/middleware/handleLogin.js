@@ -9,14 +9,17 @@ async function handleLogin(req, res){
         const userDetail = await getUser(userEmail);
         if (passwordHashSalt(userEmail) !==  userDetail.password){
             res.send("incorrect password");
+            return false;
         }else if((passwordHashSalt(userEmail) ===  userDetail.password)){
             res.send("credentials correct");
+            return true;
         }else{
             res.send("other error");
+            return false;
         }
     } catch (error) {
         res.send(error);
     }
 }
 
-export default handleLogin;
+module.exports = handleLogin;

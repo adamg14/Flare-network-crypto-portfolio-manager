@@ -6,6 +6,7 @@ import AssetAllocation from './components/AssetAllocation';
 import NavigationBar from './components/NavigationBar';
 import RegisterForm from './components/RegisterForm';
 import AddAsset from './components/AddAsset';
+import Porfolio from './components/Portfolio';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginForm from './components/LoginForm';
 
@@ -21,6 +22,7 @@ function App() {
               <Route path="/login" exact component={LoginForm}></Route>
               <Route path="/view-portfolio" exact component={AssetAllocation}></Route>
               <Route path="/add-asset" exact component={AddAsset}></Route>
+              <Route path="/portfolio" exact component={Porfolio}></Route>
             </Switch>
           </div>
         </div>
