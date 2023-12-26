@@ -23,6 +23,7 @@ function App() {
               <Route path="/view-portfolio" exact component={AssetAllocation}></Route>
               <Route path="/add-asset" exact component={AddAsset}></Route>
               <Route path="/portfolio" exact component={Porfolio}></Route>
+              <Route path="/add-asset" exact component={AddAsset}></Route>
             </Switch>
           </div>
         </div>

@@ -8,6 +8,10 @@ const cryptocurrencySchema = mongoose.Schema({
     amount: {
         type: Number,
         required: true
+    },
+    userEmail: {
+        type: String,
+        required: true
     }
 });
 
