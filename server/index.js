@@ -93,7 +93,12 @@ app.post("login", (req, res) => {
     }
 });
 
-
+app.post("/add-asset", (req, res) => {
+    // create a function specfically for this route
+    console.log(req.body.ticker);
+    console.log(req.body.amount);
+    res.send("asset should be aded to the database");
+});
 
 app.get("/logout", (req, res) =>{
     // destroy both the session and the cookie here before logging the user out

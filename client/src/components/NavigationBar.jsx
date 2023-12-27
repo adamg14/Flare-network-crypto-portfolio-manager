@@ -19,7 +19,7 @@ function NavigationBar(){
                                 <a className="nav-link" href="/login">Login</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">Add Asset</a>
+                                <a className="nav-link" href="/add-asset">Add Asset</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/portfolio">View Portfolio</a>
