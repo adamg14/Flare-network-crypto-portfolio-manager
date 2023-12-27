@@ -24,6 +24,9 @@ function NavigationBar(){
                             <li className="nav-item">
                                 <a className="nav-link" href="/portfolio">View Portfolio</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/logout">Logout</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

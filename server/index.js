@@ -93,6 +93,14 @@ app.post("login", (req, res) => {
     }
 });
 
+
+
+app.get("/logout", (req, res) =>{
+    // destroy both the session and the cookie here before logging the user out
+    res.send("successfully logged out");
+    console.log("logged out");
+});
+
 app.listen(PORT, () => {
     console.log("Server listening on PORT " + PORT + "...");
 });
